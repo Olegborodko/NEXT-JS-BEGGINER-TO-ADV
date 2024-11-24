@@ -1,10 +1,21 @@
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 
-export default async function reviewDetails({ params }: {
+type Props = {
   params: {
-    reviewId: string
-  }
-}) {
+    reviewId: string;
+  };
+};
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { reviewId } = await params;
+
+  return {
+    title: `Review ${reviewId}`,
+  };
+};
+
+export default async function reviewDetails({ params }: Props) {
   const { reviewId } = await params;
 
   if (parseInt(reviewId) > 1000) {
