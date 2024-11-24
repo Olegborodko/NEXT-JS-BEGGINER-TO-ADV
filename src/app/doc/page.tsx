@@ -1,4 +1,4 @@
-export default function Doc({ params }) {
+export default function Doc() {
   return (
     <h1>
       doc page
