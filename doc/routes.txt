@@ -1,0 +1,60 @@
+- каждая папка это rout свой
+- layout в корне работает на все файлы и роуты
+- layout внутри папки только на эту папку
+
+- динамические роуты
+products - [productId] - page.tsx
+export default function ProductDetails({params}) {
+  return (
+    <div>
+      {params.productId}
+    </div>
+  );
+}
+
+- nested dynamic routes
+/products/1/reviews/1
+products - [productId] - reviews - [reviewId]
+export default function ReviewDetails({params}) {
+  return (
+    <div>
+      {params.productId} - {params.reviewId}
+    </div>
+  );
+}
+
+- /docs/feature1/concept1
+docs - [...slug] - page.tsx
+(открывает любые url после docs/)
+export default function Docs({params}) {
+  if (params.slug.length === 2) {
+    return (
+    <h1>
+      {params.slug[0]} {params.slug[1]} 
+    </h1>
+    );
+  } else if (params.slug.length === 1) {
+   return (
+    <h1>
+      {params.slug[0]}
+    </h1>
+    );
+  }
+}
+
+- /docs - [[...slug]]
+1. /docs
+slug = []
+Вызывается страница по умолчанию для /docs.
+/docs/guide
+
+2. slug = ["guide"]
+Содержит данные для страницы /docs/guide.
+/docs/guide/setup
+
+3. slug = ["guide", "setup"]
+Поддерживает глубоко вложенные маршруты.
+/docs/anything/else
+slug = ["anything", "else"]
+
+- файлы в папке, которые имеют название отличное от page или layout не видимы как маршрут
