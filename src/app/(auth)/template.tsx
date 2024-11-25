@@ -19,9 +19,10 @@ export default function ReviewLayout({
   const pathName = usePathname();
 
   return (
-    <>
+    <div style={{ border: "1px solid" }} >
+      Template
       <div>
-        <input style={{border: "1px solid"}} value={input} onChange={e => setInput(e.target.value)} />
+        <input style={{ border: "1px solid" }} value={input} onChange={e => setInput(e.target.value)} />
       </div>
       <div>
         {navLinks.map((link) => {
@@ -42,6 +43,6 @@ export default function ReviewLayout({
       <div>
         {children}
       </div>
-    </>
+    </div>
   )
 }
